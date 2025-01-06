@@ -18,6 +18,10 @@ export default function Home() {
       <Button variant="default">Find Event</Button>
     </div>
 
+    <div className="absolute top-4 right-4 md:top-4 md:right-4 flex flex-col items-center gap-4 w-full md:w-auto">
+    <ModeToggle>mode</ModeToggle>
+    </div>
+
     {/* Login and Register Buttons */}
     {/* <div className="absolute top-4 right-4 md:top-4 md:right-4 flex flex-col items-center gap-4 w-full md:w-auto">
       <Button
