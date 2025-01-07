@@ -8,9 +8,11 @@ import {
   CardTitle,
 } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
+import { useRouter } from "next/navigation"
 
 
 const Cards = () => {
+  const router = useRouter();
   return (
     <div className="p-6 mx-auto max-w-xs">
       <Card>
@@ -25,7 +27,10 @@ const Cards = () => {
         </CardContent>
         <CardFooter className="flex items-center justify-between">
           <p>25 July 2025</p>
-          <Button variant="default">View Event</Button>
+          <Button variant="default" onClick={() => {
+            router.push("/viewevent")
+          }
+          } >View Event</Button>
         </CardFooter>
       </Card>
     </div>

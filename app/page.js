@@ -11,7 +11,7 @@ export default function Home() {
   const {theme} = useTheme();
   const router = useRouter();
   return (
-    <div className="bg-black min-h-screen flex flex-col">
+    <div className="min-h-screen flex flex-col">
   {/* Header Section */}
   <header className={`w-full h-[45vh] flex flex-col justify-center items-center relative transition-all duration-300 ${theme === "dark" ? "bg-gray-800 text-white" : "bg-gray-300 text-black"}`}>
     <h1 className={`text-4xl font-bold mb-10 ${theme === "dark" ? "text-white ": "text-black "}`}>Tournament-Hub</h1>
@@ -22,7 +22,7 @@ export default function Home() {
     </div>
 
     <div className="absolute top-4 right-4 md:top-4 md:right-4 flex flex-col items-center gap-4 w-full md:w-auto">
-    <ModeToggle>mode</ModeToggle>
+    <ModeToggle/>
     </div>
 
     {/* Login and Register Buttons */}
@@ -43,16 +43,41 @@ export default function Home() {
   </header>
 
       {/* Cards */}
-      <main className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 p-6 mx-8">
-        <Cards />
-        <Cards />
-        <Cards />
-        <Cards />
-        <Cards />
-        <Cards />
-        <Cards />
-        <Cards />
-      </main>
+      <div className="p-6 mx-8">
+  {/* Featured Event */}
+  <section className="mb-8">
+    <h2 className="text-2xl font-bold mb-4 text-center">Featured Event</h2>
+    <main className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+      <Cards/>
+      <Cards />
+      <Cards />
+      <Cards />
+    </main>
+  </section>
+
+  {/* Upcoming Event */}
+  <section className="mb-8">
+    <h2 className="text-2xl font-bold mb-4 text-center">Upcoming Event</h2>
+    <main className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+      <Cards />
+      <Cards />
+      <Cards />
+      <Cards />
+    </main>
+  </section>
+
+  {/* Completed Event */}
+  <section className="mb-8">
+    <h2 className="text-2xl font-bold mb-4 text-center">Completed Event</h2>
+    <main className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+      <Cards />
+      <Cards />
+      <Cards />
+      <Cards />
+    </main>
+  </section>
+</div>
+
       <div>
         <Footer/>
       </div>

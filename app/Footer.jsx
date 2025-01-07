@@ -1,8 +1,11 @@
 import React from 'react';
+import { useTheme } from 'next-themes';
 
 const Footer = () => {
+
+  const {theme} = useTheme();
   return (
-    <footer className="bg-gray-800 text-white mt-10 py-10">
+    <footer className={`mt-10 py-10 ${theme === "dark" ? "bg-gray-800 text-white" : "bg-gray-300 text-black"}`}>
       <div className="max-w-screen-xl mx-auto px-4">
         <div className="flex flex-col md:flex-row justify-between items-center">
           {/* Website Name and Quote */}

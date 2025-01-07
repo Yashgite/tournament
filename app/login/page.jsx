@@ -6,13 +6,13 @@ import { useRouter } from 'next/navigation'
 
 const Page = () => {
     const session = useSession();
-    console.log(session);
+    //console.log(session);
 
     const router = useRouter();
 
     useEffect(()=>{
         if(session.status === "authenticated"){
-            router.push("/home");
+            router.push("/findevent");
         }
     },[session.status])
     return (
