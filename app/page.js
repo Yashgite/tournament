@@ -5,6 +5,7 @@ import { useRouter } from "next/navigation";
 import { Button } from "@/components/ui/button"
 import { ModeToggle } from "@/components/ui/ModeToggle";
 import { useTheme } from "next-themes";
+import Footer from "./Footer";
 
 export default function Home() {
   const {theme} = useTheme();
@@ -17,7 +18,7 @@ export default function Home() {
 
     <div className="flex gap-6">
       <Button variant="default">Create an Event</Button>
-      <Button variant="default">Find Event</Button>
+      <Button variant="default" onClick = {()=> router.push("/findevent")}>Find Event</Button>
     </div>
 
     <div className="absolute top-4 right-4 md:top-4 md:right-4 flex flex-col items-center gap-4 w-full md:w-auto">
@@ -52,7 +53,9 @@ export default function Home() {
         <Cards />
         <Cards />
       </main>
-
+      <div>
+        <Footer/>
+      </div>
     </div>
   );
 }
