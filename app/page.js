@@ -4,14 +4,16 @@ import Cards from "./Cards";
 import { useRouter } from "next/navigation";
 import { Button } from "@/components/ui/button"
 import { ModeToggle } from "@/components/ui/ModeToggle";
+import { useTheme } from "next-themes";
 
 export default function Home() {
+  const {theme} = useTheme();
   const router = useRouter();
   return (
     <div className="bg-black min-h-screen flex flex-col">
   {/* Header Section */}
-  <header className="w-full h-[45vh] flex flex-col justify-center items-center bg-gray-300 relative">
-    <h1 className="text-4xl text-black font-bold mb-10">Tournament-Hub</h1>
+  <header className={`w-full h-[45vh] flex flex-col justify-center items-center relative transition-all duration-300 ${theme === "dark" ? "bg-gray-800 text-white" : "bg-gray-300 text-black"}`}>
+    <h1 className={`text-4xl font-bold mb-10 ${theme === "dark" ? "text-white ": "text-black "}`}>Tournament-Hub</h1>
 
     <div className="flex gap-6">
       <Button variant="default">Create an Event</Button>
