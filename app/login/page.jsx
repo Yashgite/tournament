@@ -1,46 +1,116 @@
 "use client";
 
-import React,{useEffect} from 'react'
-import { signIn, useSession } from 'next-auth/react'
-import { useRouter } from 'next/navigation' 
+import React, { useEffect } from "react";
+import { signIn, useSession } from "next-auth/react";
+import { useRouter } from "next/navigation";
+import { Button } from "@/components/ui/button";
 
-const Page = () => {
+import { toast } from 'sonner'
+import { useForm } from 'react-hook-form'
+import { zodResolver } from '@hookform/resolvers/zod'
+import * as z from 'zod'
+import {
+    Form,
+    FormControl,
+    FormDescription,
+    FormField,
+    FormItem,
+    FormLabel,
+    FormMessage,
+} from '@/components/ui/form'
+import { Input } from '@/components/ui/input'
+import { PasswordInput } from '@/components/ui/password-input'
+
+
+const formSchema = z.object({
+    email: z.string().email('Invalid email address').min(1, 'Email is required'),
+    password: z.string().min(6, 'Password must be at least 6 characters').max(15, 'Password cannot be longer than 15 characters'),
+})
+
+const LoginForm = () => {
+
+    const form = useForm({
+        resolver: zodResolver(formSchema),
+    })
+
+    const onSubmit = (values) => {
+        try {
+            console.log(values)
+            toast(
+                <pre className="mt-2 w-[340px] rounded-md bg-slate-950 p-4">
+                    <code className="text-white">{JSON.stringify(values, null, 2)}</code>
+                </pre>
+            )
+        } catch (error) {
+            console.error('Form submission error', error)
+            toast.error('Failed to submit the form. Please try again.')
+        }
+    }
+
     const session = useSession();
-    //console.log(session);
-
     const router = useRouter();
 
-    useEffect(()=>{
-        if(session.status === "authenticated"){
+    useEffect(() => {
+        if (session.status === "authenticated") {
             router.push("/findevent");
         }
-    },[session.status])
-    return (
-        <div className="flex items-center justify-center min-h-screen bg-black">
-            <div className="w-full max-w-md p-8 space-y-6 bg-white rounded shadow-md">
-                <h2 className="text-2xl font-bold text-black text-center">Login</h2>
-                <form className="space-y-4">
-                    <div>
-                        <label htmlFor="username" className="block text-sm font-medium text-gray-700">Username</label>
-                        <input type="text" id="username" name="username" className="w-full px-3 py-2 mt-1 border rounded-md focus:outline-none focus:ring focus:ring-indigo-200" />
-                    </div>
-                    <div>
-                        <label htmlFor="password" className="block text-sm font-medium text-gray-700">Password</label>
-                        <input type="password" id="password" name="password" className="w-full px-3 py-2 mt-1 border rounded-md focus:outline-none focus:ring focus:ring-indigo-200" />
-                    </div>
-                    <button type="submit" className="w-full px-4 py-2 font-bold text-white bg-indigo-600 rounded-md hover:bg-indigo-700 focus:outline-none focus:ring focus:ring-indigo-200">Login</button>
-                </form>
-                <div className="flex items-center justify-center mt-4">
-                    <span className="text-sm text-gray-600">or</span>
-                </div>
-                <button 
-                    className="w-full px-4 py-2 font-bold text-white bg-red-600 rounded-md hover:bg-red-700 focus:outline-none focus:ring focus:ring-red-200" 
-                    onClick={()=> signIn("google")}>
-                        Login with Google
-                </button>
-            </div>
-        </div>
-    )
-}
+    }, [session.status]);
 
-export default Page
+    return (
+        <div className="w-full max-w-lg p-10 space-y-5 bg-slate-300 rounded-lg shadow-md">
+            <h2 className="text-2xl font-bold text-center">Login</h2>
+            <Form {...form}>
+                <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8 max-w-3xl mx-auto p-16">
+
+                    <FormField
+                        control={form.control}
+                        name="email"
+                        render={({ field }) => (
+                            <FormItem>
+                                <FormLabel>Email</FormLabel>
+                                <FormControl>
+                                    <Input
+                                        placeholder="Enter a valid e-mail"
+                                        type="email"
+                                        {...field}
+                                    />
+                                </FormControl>
+                                <FormDescription>This is your public display name.</FormDescription>
+                                <FormMessage />
+                            </FormItem>
+                        )}
+                    />
+
+                    <FormField
+                        control={form.control}
+                        name="password"
+                        render={({ field }) => (
+                            <FormItem>
+                                <FormLabel>Password</FormLabel>
+                                <FormControl>
+                                    <PasswordInput
+                                        placeholder="Enter a strong Password"
+                                        {...field}
+                                    />
+                                </FormControl>
+                                <FormMessage />
+                            </FormItem>
+                        )}
+                    />
+
+                    <Button className="w-full p-6 font-bold bg-blue-600 rounded-md hover:bg-blue-700 focus:outline-none focus:ring focus:ring-red-200" type="submit">
+                        Submit
+                    </Button>
+                    <Button
+                        className="w-full p-6 font-bold bg-red-600 rounded-md hover:bg-red-700 focus:outline-none focus:ring focus:ring-red-200"
+                        onClick={() => signIn("google")}
+                    >
+                        Login with Google
+                    </Button>
+                </form>
+            </Form>
+
+        </div>
+    );
+};
+export default LoginForm
