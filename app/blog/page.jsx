@@ -4,7 +4,7 @@ import { motion } from 'framer-motion';
 import Cards from '../Cards';
 
 const blogPosts = [
-  1,2,3,4,5,6,7,8,9 
+  1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18 
 ];
 
 export default function Blog() {
@@ -42,6 +42,7 @@ export default function Blog() {
               duration: 1,
               delay: Math.min(index * 0.1, 0.6), // staggered animation for each card
             }}
+            whileOutOfView={{ opacity: 0, y: 50 }} 
             
           >
             <Cards/>

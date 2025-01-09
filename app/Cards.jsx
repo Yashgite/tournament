@@ -15,12 +15,12 @@ const Cards = () => {
 
   return (
     <motion.div
-      className="p-6 mx-auto max-w-3xl"
+      className="p-6 mx-auto max-w-3xl border-none"
       initial={{ y: 50 }}
       animate={{y:0, opacity:1}}
       transition={{ duration: 1.5 }}
     >
-      <Card>
+      <Card className="border-none">
         <CardHeader>
           <motion.img
             src="/abc.jpg"
@@ -37,15 +37,6 @@ const Cards = () => {
             Step into the arena and unleash your inner warrior at the ultimate Street Fighter Tournament! Fight for glory, combos, and the title of champion—are you ready to battle?
           </p>
         </CardContent>
-        <CardFooter className="flex items-center justify-between">
-          <p>25 July 2025</p>
-          <Button
-            variant="default"
-            onClick={() => router.push("/viewevent")}
-          >
-            View Event
-          </Button>
-        </CardFooter>
       </Card>
     </motion.div>
   );
