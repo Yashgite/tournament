@@ -10,13 +10,18 @@ import { ModeToggle } from "@/components/ui/ModeToggle";
 import { signOut, useSession } from "next-auth/react";
 import LoginForm from "../login/page";
 import Registerform from "../register/page";
+import { motion } from "framer-motion";
+import { useTheme } from "next-themes";
+
 
 
 const FindEvent = () => {
+  const theme = useTheme();
   const session = useSession();
   const router = useRouter();
   const [showLogin, setShowLogin] = useState(false);
   const [showRegister, setShowRegister] = useState(false);
+  const AnimatedButton = motion(Button);
 
   useEffect(() => {
     if (session.status === "authenticated" && showLogin) {
@@ -43,29 +48,55 @@ const FindEvent = () => {
               placeholder="Search the Event"
             />
             <div className="flex gap-5">
-              <Button>Search</Button>
+              <AnimatedButton
+              whileHover={{scale:1.1}}
+              whileTap={{scale:0.3}}
+              transition={{duration:0.8}}
+              >Search</AnimatedButton>
               {session.status === "authenticated" ? (
                 <div>
-                <Button onClick={() => signOut("google")}>Logout</Button>
-                <Button className="ml-5">UserProfile</Button>
+                <AnimatedButton 
+                whileHover={{scale:1.1}}
+                whileTap={{scale:0.3}}
+                transition={{duration:0.8}}
+                onClick={() => signOut("google")}>Logout</AnimatedButton>
+                <AnimatedButton 
+                whileHover={{scale:1.1}}
+                whileTap={{scale:0.3}}
+                transition={{duration:0.8}}
+                className="ml-5">UserProfile</AnimatedButton>
                 </div>
               ) : (
                 <div>
-                  <Button
+                  <AnimatedButton
+                  whileHover={{scale:1.1}}
+                  whileTap={{scale:0.3}}
+                  transition={{duration:0.8}}
                     className="mr-5"
                     onClick={() => setShowLogin(true)}
                   >
                     Login
-                  </Button>
-                  <Button onClick = {()=> {
+                  </AnimatedButton>
+                  <AnimatedButton 
+                  whileHover={{scale:1.1}}
+                  whileTap={{scale:0.3}}
+                  transition={{duration:0.8}}
+                  onClick = {()=> {
                           setShowRegister(true)
-                          }}>Register</Button>
+                          }}>Register</AnimatedButton>
                 </div>
               )}
               <ModeToggle />
             </div>
           </nav>
         </div>
+        <motion.div
+        whileHover={{scale:1.2}}
+          initial={{opacity:1, y:60}}
+          animate={{y:0,opacity:1}}
+          transition={{duration:0.5}}
+          className={`text-4xl hover:cursor-pointer flex my-10 items-center justify-center font-bold ${theme === "dark" ? "text-white ": "text-black "}`}>BLOG
+        </motion.div>
         <div className="flex flex-wrap mx-20 mt-15">
           <Cards />
           <Cards />
