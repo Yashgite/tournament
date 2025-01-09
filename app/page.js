@@ -6,16 +6,19 @@ import { motion } from "framer-motion";
 
 
 const page = () => {
+  const AnimatedButton = motion(Button);
   const router = useRouter();
   return (
-    <motion.div
+    <div
     className="mx-auto my-20 items-center justify-center flex"
-    whileTap={{scale:0.8}}
-    whileHover={{scale:1.2}}
-    initial={{scale:1}}
+    
     >
-      <Button className="p-5 text-2xl" onClick={()=> router.push("/blog") }>Blog</Button>
-    </motion.div>
+      <AnimatedButton 
+      whileTap={{scale:0.8}}
+      whileHover={{scale:1.2}}
+      initial={{scale:1}}
+      className="p-5 text-2xl" onClick={()=> router.push("/blog") }>Blog</AnimatedButton>
+    </div>
   )
 }
 
