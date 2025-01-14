@@ -1,7 +1,7 @@
 "use client";
 import React from "react";
 import { useParams,useRouter } from "next/navigation";
-import carddata from "@/data/carddata.json"; // Import the card data
+import carddata from "@/data/carddata.json"; 
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 
@@ -10,7 +10,7 @@ export default function BlogPost() {
     const AnimatedImage = motion.img
   const router = useRouter();
   const {id} = useParams();             //to get id from URL
-  console.log(id);
+  // console.log(id);
 
   // Find the blog post by ID
   const post = carddata.find((item) => item.id === parseInt(id));

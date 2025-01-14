@@ -9,16 +9,8 @@ const page = () => {
   const AnimatedButton = motion(Button);
   const router = useRouter();
   return (
-    <div
-    className="mx-auto my-20 items-center justify-center flex"
-    
-    >
-      <AnimatedButton 
-      whileTap={{scale:0.8}}
-      whileHover={{scale:1.2}}
-      initial={{scale:1}}
-      className="p-5 text-2xl" onClick={()=> router.push("/blog") }>Blog</AnimatedButton>
-    </div>
+   <>
+   </>
   )
 }
 
