@@ -63,10 +63,10 @@ export default function Blog() {
           transition={{ duration: 1.2 }}
         >
           <h2 className="text-2xl sm:text-4xl font-bold text-green-800">
-            The easier, more affordable way to run golf tournaments
+            The easier, more affordable way to run Pickleball tournaments
           </h2>
           <p className="mt-4 max-w-3xl mx-auto text-sm sm:text-base text-gray-500 ">
-            We believe that golf tournaments are better with Live Scoring. We also believe it shouldn't take a genius and a massive bank roll to offer this to your players. Live Tourney is the perfect blend of simple, flexible, and affordable.
+            We believe that Pickleball tournaments are better with Live Scoring. We also believe it shouldn't take a genius and a massive bank roll to offer this to your players. Live Tourney is the perfect blend of simple, flexible, and affordable.
           </p>
         </motion.div>
         <motion.div

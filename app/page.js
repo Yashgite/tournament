@@ -1,15 +1,33 @@
 "use client";
 import React from "react";
+import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { Button } from "@/components/ui/button"
 import { motion } from "framer-motion";
 
 
 const page = () => {
-  const AnimatedButton = motion(Button);
+  const AnimatedButton = motion.create(Button);
+  const AnimatedImage = motion.create(Image)
   const router = useRouter();
   return (
    <>
+   <div className=" jw-full justify-center items-center mx-auto max-w-4xl sm:p-10 px-4">
+    <div className="flex justify-center items-center my-16">
+      <AnimatedImage
+      initial={{ opacity: 0, rotateX: 90, rotateY: 5 }}
+      animate={{ opacity: 1, rotateX: 0, rotateY: 0 }}
+      transition={{ duration: 1.5, ease: "easeInOut" }}
+      src="/dash.jpeg"
+      className="rounded-2xl object-cover h-96"
+      width={800}
+      height={300}
+      alt="pickleball game image"
+      >
+
+      </AnimatedImage>
+    </div>
+   </div>
    </>
   )
 }

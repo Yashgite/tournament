@@ -18,16 +18,16 @@ export default function Navbar() {
 
           {/* Menu (Desktop) */}
           <div className="hidden md:flex space-x-8">
-            <Link href="/blog" className="text-gray-700 hover:text-blue-600">
+            <Link href="/blog" className="text-gray-700 hover:text-green-600">
               Blog
             </Link>
-            <Link href="/feature" className="text-gray-700 hover:text-blue-600">
+            <Link href="/feature" className="text-gray-700 hover:text-green-600">
               Feature
             </Link>
-            <Link href="/pricing" className="text-gray-700 hover:text-blue-600">
+            <Link href="/pricing" className="text-gray-700 hover:text-green-600">
               Pricing
             </Link>
-            <Link href="/faq" className="text-gray-700 hover:text-blue-600">
+            <Link href="/faq" className="text-gray-700 hover:text-green-600">
               FAQ
             </Link>
           </div>
@@ -36,13 +36,13 @@ export default function Navbar() {
           <div className="hidden md:flex space-x-4 items-center">
             <Link
               href="/login"
-              className="text-gray-700 hover:text-blue-600"
+              className="text-gray-700 hover:text-green-600"
             >
               Login
             </Link>
             <Link
               href="/try-demo"
-              className="px-4 py-2 bg-green-600 rounded-full text-white rounded hover:bg-green-700"
+              className="px-4 py-2 bg-green-600 rounded-full text-white hover:bg-green-700"
             >
               Try Demo
             </Link>
